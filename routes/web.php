@@ -20,7 +20,7 @@ Route::get('/', function () {
         if(Auth::user()->is_admin == 1){
                 return redirect('/admin');
         }else{
-                return redirect('/home');
+                return redirect('/user');
         }
     }else{
         return redirect('login');
@@ -29,8 +29,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::resource('user', 'UserController');
-Route::resource('admin', 'AdminController');
+Route::group(['middleware' => ['auth','customer']], function () {
+    Route::resource('user', 'UserController');
+    Route::resource('admin', 'AdminController');
+});
+
 Route::get('/sendemail', function () {
 
     Mail::to('ohm2393@gmail.com')->send(new NewUserNotification()); 

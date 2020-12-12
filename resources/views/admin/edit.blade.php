@@ -36,6 +36,15 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="form-group col-12 col-lg-12 col-md-12">
+                        <select required id="status" name="status" class="form-control">
+                            <option @if ($user->status == 0) selected @endif value="0">Disabled</option>
+                            <option @if ($user->status == 1) selected @endif value="1">Enabled</option>
+                        </select>
+                    </div>
+                </div>
+
                 <div class="row d-flex justify-content-center">
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">{{ __('Update User') }}</button>

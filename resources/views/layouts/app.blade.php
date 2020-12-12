@@ -42,7 +42,10 @@
                     <ul class="navbar-nav mr-auto">
                      @if(Auth::user() && Auth::user()->is_admin == 1)
                         <li class="nav-item">
-                            <a class="nav-link" href='admin'>User</a>
+                            <a class="nav-link" href='/admin'>User</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href='/admin/create'>Create User</a>
                         </li>
                      @else
                         @if(Auth::user())

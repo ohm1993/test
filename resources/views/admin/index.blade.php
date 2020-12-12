@@ -20,6 +20,7 @@
           <th>Id</th>
           <th>Name</th>
           <th>Email</th>
+          <th>Status</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -29,6 +30,7 @@
           <td>{{ $key + 1 }}</td>
           <td>{{ $user->name }}</td>
           <td>{{ $user->email }}</td>
+          <td>{{ $user->status == 0 ? 'Disabled' : 'Enabled' }}
           <td>
             <form action="{{ route('admin.destroy', $user->id)}}" method="post">
               @csrf

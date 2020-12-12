@@ -102,6 +102,7 @@ class AdminController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string'],
+            'status' => ['required'],
         ]);
         if ($validator->fails()) {
             return redirect('admin/' . $id . '/edit')
@@ -111,6 +112,7 @@ class AdminController extends Controller
         $user = User::find($id);
         $user->name =  $request->get('name');
         $user->email = $request->get('email');
+        $user->status = $request->get('status');
         $user->save();
         return redirect('admin')->with('status', 'User Updated Successfully');
     }
