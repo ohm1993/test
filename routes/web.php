@@ -29,16 +29,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::group(['middleware' => ['auth','customer']], function () {
+Route::group(['middleware' => ['auth','customer','user']], function () {
     Route::resource('user', 'UserController');
+});
+Route::group(['middleware' => ['auth','customer','admin']], function () {
     Route::resource('admin', 'AdminController');
 });
 
-Route::get('/sendemail', function () {
-
-    Mail::to('ohm2393@gmail.com')->send(new NewUserNotification()); 
-
-    return 'A message has been sent to Mailtrap!';
-
-});
 
